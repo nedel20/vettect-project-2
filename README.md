@@ -1,0 +1,2 @@
+# vettect-project-2
+For this project, you will be building an application that allows users to organize tasks using JavaScript and React. Your todo list application should allow users to add items to the list, remove items, and edit items already in the list. There should be a button on each item in the todo list that will mark it as "finished" and move it to a separate list containing all of the finished items. 
