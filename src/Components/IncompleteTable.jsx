@@ -6,16 +6,20 @@ const IncompleteTable = (props) => {
             <thead>
                 <tr>
                     <th>Task ID</th>
-                    <th>Task</th>
+                    <th>The Task At Hand</th>
                     <th>Task Options</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Clean Cat</td>
-                    <td>1</td>
-                </tr>
+            {props.parentTasks.map((task, index) => {
+                    return (
+                        <tr key={task.tasks}>
+                            <td>{index+1}</td>
+                            <td>{task.tasks}</td>
+                            <td>{index}</td> 
+                        </tr>
+                    );
+                })}
             </tbody>
         </table>
         </>
