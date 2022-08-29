@@ -1,6 +1,5 @@
-import './App.css';
-import CompleteTable from './components/CompleteTable';
-import IncompleteTable from './components/IncompleteTable';
+import CompleteTable from './Components/CompleteTable';
+import IncompleteTable from './Components/IncompleteTable';
 
 function App() {
   return (
