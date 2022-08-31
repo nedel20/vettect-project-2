@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import AddContentForm from './Components/Button Components/AddContentForm';
-import CompleteTable from './Components/CompleteTable';
-import IncompleteTable from './Components/IncompleteTable';
+import {AddContentForm} from './Components/Button Components/AddContentForm';
+import {CompleteTable} from './Components/CompleteTable';
+import {IncompleteTable} from './Components/IncompleteTable';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 /**
  * 
  * AddContentForm pass in props to form to  allow access 
@@ -17,11 +19,15 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <IncompleteTable parentTasks={taskList}/>
-      <CompleteTable/>
-      <AddContentForm setMyTasks={addTask}/> 
-    </div>
+    
+    
+      <div className="App">
+        <IncompleteTable parentTasks={taskList}/>
+        <CompleteTable/>
+        <AddContentForm setMyTasks={addTask}/> 
+      </div>
+    
+    
   );
 }
 

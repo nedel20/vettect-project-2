@@ -1,3 +1,5 @@
+import {EditContent} from './ButtonComponents/EditContent';
+
 const IncompleteTable = (props) => {
     return ( 
         <>
@@ -16,7 +18,7 @@ const IncompleteTable = (props) => {
                         <tr key={task.tasks}>
                             <td>{index+1}</td>
                             <td>{task.tasks}</td>
-                            <td>{index}</td> 
+                            {/* <td>{EditContent}</td>  */}
                         </tr>
                     );
                 })}
