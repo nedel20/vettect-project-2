@@ -13,7 +13,7 @@ const AddContentForm = (props) => {
         event.preventDefault(); // prevents page from refreshing upon submit
 
         // const task =taskRef.current.value;
-        props.setMyTasks({tasks: taskRef.current.value});
+        props.setMyTasks({chore: taskRef.current.value});
     }
 
     return ( 

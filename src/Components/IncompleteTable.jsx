@@ -17,11 +17,11 @@ const IncompleteTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-            {props.parentTasks.map((task,index) => {
+            {props.parentTasks.map((parentTask, index) => {
                     return (
-                        <tr key={task.tasks}>
+                        <tr key={parentTask.chore}>
                             <td>{index +1 }</td>
-                            <td>{task.tasks}</td>
+                            <td>{parentTask.chore}</td>
                             {/* <td>{EditContent}</td>  */}
                         </tr>
                     );

@@ -12,7 +12,7 @@ import data from './data.json';
 function App() {
 
   // passing in data from data file and updating state with data
-  const [taskList, setTasks] = useState([]); 
+  const [taskList, setTasks] = useState(data); 
 
   // Creates a new array with contents of the old array in addition to the tasks that needs to be added
   // sets the tasks list to be the new array
@@ -25,8 +25,10 @@ function App() {
     
       <div className="App">
         <IncompleteTable parentTasks={taskList}/>
-        <CompleteTable/>
+        <h3>Add a Task</h3>
         <AddContentForm setMyTasks={addTask}/> 
+        <CompleteTable/>
+        
       </div>
     
     
