@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import {AddContentForm} from './Components/Button Components/AddContentForm';
-import {CompleteTable} from './Components/CompleteTable';
-import {IncompleteTable} from './Components/IncompleteTable';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import AddContentForm from './Components/Button Components/AddContentForm';
+import CompleteTable from './Components/CompleteTable';
+import IncompleteTable from './Components/IncompleteTable';
+import data from './data.json';
 
 /**
  * 
@@ -10,7 +10,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
  */
 function App() {
 
-  const [taskList, setTasks] = useState([]); 
+  // passing in data from data file and updating state with data
+  const [taskList, setTasks] = useState(data); 
 
   // Creates a new array with contents of the old array in addition to the tasks that needs to be added
   // sets the tasks list to be the new array
