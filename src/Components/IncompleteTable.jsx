@@ -2,11 +2,11 @@ import React, { Fragment } from "react";
 import EditContent from "./EditorReadOnly/EditContent";
 import ReadOnly from "./EditorReadOnly/ReadOnly";
 
-
-const IncompleteTable = (props) => {
+const IncompleteTable = ({ parentTasks }) => {
   return (
     <>
       <h2>Incompleted Tasks</h2>
+      <form>
       <table>
         <thead>
           <tr>
@@ -16,7 +16,7 @@ const IncompleteTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.parentTasks.map((parentTask, index) => {
+          {parentTasks.map((parentTask, index) => {
             return (
               <Fragment>
                 <EditContent />
@@ -26,6 +26,7 @@ const IncompleteTable = (props) => {
           })}
         </tbody>
       </table>
+      </form>
     </>
   );
 };
