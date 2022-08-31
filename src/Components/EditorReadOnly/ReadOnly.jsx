@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const ReadOnly = () => {
+const ReadOnly = ({parentTask,index}) => {
   return (
-    <div>ReadOnly</div>
-  )
-}
+    <tr key={parentTask.chore}>
+      <td>{Number(index + 1)}</td>
+      <td>{parentTask.chore}</td>
+      
+    </tr>
+  );
+};
 
-export default ReadOnly
+export default ReadOnly;

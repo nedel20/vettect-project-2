@@ -1,4 +1,5 @@
 import React from 'react';
+import ReadOnly from './EditorReadOnly/ReadOnly';
 // import EditContent from './ButtonComponents/EditContent';
 
 
@@ -18,13 +19,7 @@ const IncompleteTable = (props) => {
             </thead>
             <tbody>
             {props.parentTasks.map((parentTask, index) => {
-                    return (
-                        <tr key={parentTask.chore}>
-                            <td>{index +1 }</td>
-                            <td>{parentTask.chore}</td>
-                            {/* <td>{EditContent}</td>  */}
-                        </tr>
-                    );
+                 return(<ReadOnly parentTask={parentTask} index={index}/>);
                 })}
             </tbody>
         </table>
