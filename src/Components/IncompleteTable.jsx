@@ -1,4 +1,5 @@
-import {EditContent} from './ButtonComponents/EditContent';
+import React from 'react';
+// import EditContent from './ButtonComponents/EditContent';
 
 
 const IncompleteTable = (props) => {
@@ -16,11 +17,11 @@ const IncompleteTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-            {props.parentTasks.map((tasks) => {
+            {props.parentTasks.map((task,index) => {
                     return (
-                        <tr key={tasks.task}>
-                            <td>{tasks.id}</td>
-                            <td>{tasks.task}</td>
+                        <tr key={task.tasks}>
+                            <td>{index +1 }</td>
+                            <td>{task.tasks}</td>
                             {/* <td>{EditContent}</td>  */}
                         </tr>
                     );

@@ -1,3 +1,5 @@
+import React from 'react';
+
 const CompleteTable = (props) => {
     return ( 
         <>

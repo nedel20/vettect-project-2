@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import AddContentForm from './Components/Button Components/AddContentForm';
 import CompleteTable from './Components/CompleteTable';
@@ -11,7 +12,7 @@ import data from './data.json';
 function App() {
 
   // passing in data from data file and updating state with data
-  const [taskList, setTasks] = useState(data); 
+  const [taskList, setTasks] = useState([]); 
 
   // Creates a new array with contents of the old array in addition to the tasks that needs to be added
   // sets the tasks list to be the new array

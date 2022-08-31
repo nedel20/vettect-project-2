@@ -1,15 +1,15 @@
 [
     {
         "id": 1,
-        "task":"Water the plants"
+        "chore":"Water the plants"
     },
     {
         "id": 2,
-        "task":"Feed the dog"
+        "chore":"Feed the dog"
     },
     {
         "id": 3,
-        "task":"Play Tiny Tina"
+        "chore":"Play Tiny Tina"
     }
     
 ]
