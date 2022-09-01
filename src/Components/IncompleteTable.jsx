@@ -5,8 +5,12 @@ import ReadOnly from "./EditorReadOnly/ReadOnly";
 
 const IncompleteTable = ({ parentTasks }) => {
 
-    const [editTask, setEditTask] = useState(2);
+    const [editTask, setEditTask] = useState(null);
 
+    const handleEditClick =(event, parentTasks) =>{
+      event.preventDefault();
+       setEditTask(parentTasks.id);
+      }
    
 
   return (
@@ -28,7 +32,10 @@ const IncompleteTable = ({ parentTasks }) => {
                { editTask === parentTask.id ? <EditContent 
                 parentTask={parentTask} 
                 index={index}
-                /> :( <ReadOnly parentTask={parentTask} index={index} />)}
+                /> :( <ReadOnly 
+                  parentTask={parentTask} 
+                  index={index}
+                   handleEditClick={handleEditClick}/>)}
                
               </Fragment>
             );

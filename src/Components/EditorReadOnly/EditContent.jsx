@@ -2,19 +2,19 @@ import React from "react";
 import { useRef } from "react";
 
 
-const EditContent = ({ parentTask,index }) => {
+const EditContent = (props) => {
   // variable to pass data using useRef()
   const taskRef = useRef();
-  const handleEditClick =(event, parentTask) =>{
-event.preventDefault();
-setEditTask(parentTask.id);
-}
+//   const handleEditClick =(event, parentTask) =>{
+// event.preventDefault();
+//  props.setEditTask(parentTask.id);
+// }
 
 
   return (
     <tr>
       
-      <td>{Number(index + 1)}</td>
+      <td>{Number(props.index + 1)}</td>
       <td>
         <input
           type="text"
