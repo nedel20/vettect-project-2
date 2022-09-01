@@ -1,8 +1,14 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useState }  from "react";
 import EditContent from "./EditorReadOnly/EditContent";
 import ReadOnly from "./EditorReadOnly/ReadOnly";
 
+
 const IncompleteTable = ({ parentTasks }) => {
+
+    const [editTask, setEditTask] = useState(2);
+
+   
+
   return (
     <>
       <h2>Incompleted Tasks</h2>
@@ -19,8 +25,11 @@ const IncompleteTable = ({ parentTasks }) => {
           {parentTasks.map((parentTask, index) => {
             return (
               <Fragment>
-                <EditContent />
-                <ReadOnly parentTask={parentTask} index={index} />
+               { editTask === parentTask.id ? <EditContent 
+                parentTask={parentTask} 
+                index={index}
+                /> :( <ReadOnly parentTask={parentTask} index={index} />)}
+               
               </Fragment>
             );
           })}
