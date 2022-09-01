@@ -1,28 +1,21 @@
 import React from "react";
-import { useRef } from "react";
 
-
-const EditContent = (props) => {
-  // variable to pass data using useRef()
-  const taskRef = useRef();
-//   const handleEditClick =(event, parentTask) =>{
-// event.preventDefault();
-//  props.setEditTask(parentTask.id);
-// }
-
-
+const EditContent = ( {parentTask, editTaskFormData, handleEditButtonSubmit,index }) => {
   return (
-    <tr>
-      
-      <td>{Number(props.index + 1)}</td>
+    <tr key={parentTask.chore}>
+      <td>{Number(index + 1)}</td>
       <td>
         <input
           type="text"
+          name="chore"
           required="required"
           placeholder="Enter a task..."
-          ref={taskRef}
+          value={editTaskFormData.chore}
+          onChange={handleEditButtonSubmit}
         ></input>
-        
+      </td>
+      <td>
+        <button type="submit">Save</button>
       </td>
     </tr>
   );
