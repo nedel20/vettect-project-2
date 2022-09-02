@@ -3,40 +3,53 @@ import EditContent from "./EditorReadOnly/EditContent";
 // import EditContentForm from "./EditorReadOnly/EditContentForm";
 import ReadOnly from "./EditorReadOnly/ReadOnly";
 
-
-const IncompleteTable = ({ parentTasks }) => {
-
-    
-
-  const [editTask, setEditTask] = useState(null);
+const IncompleteTable = ({ taskList, setTasks }) => {
+  const [editTaskId, setEditTaskId] = useState(null);
 
   const [editTaskFormData, setEditTaskFormData] = useState({
     id: "",
     chore: "",
   });
 
-  // Create form to handle submitted data
-  const handleEditButtonSubmit = (event) => {
-    event.preventDefault(); // prevents page from refreshing upon submit
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
 
-   
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
+    const editedTask = {
+      id: editTaskId,
+      chore: editTaskFormData.chore,
+    };
 
-    const newFormData = { ...editTaskFormData };
-    newFormData[fieldName] = fieldValue;
+    const newTasks = [...taskList];
 
-    setEditTaskFormData(newFormData);
+    const index = taskList.findIndex((value) => value.id === editTaskId);
+
+    newTasks[index] = editedTask;
+
+    setTasks(newTasks);
+    setEditTaskId(null);
   };
 
-  const handleEditClick = (event, parentTasks) => {
-    event.preventDefault();
-    setEditTask(parentTasks.id);
+  // Create form to handle submitted data
+  // const handleEditButtonSubmit = (event) => {
+  //   event.preventDefault(); // prevents page from refreshing upon submit
 
-    const formValues={
-      id: parentTasks.id,
-      chore: parentTasks.chore
-    }
+  //   const fieldName = event.target.getAttribute("name");
+  //   const fieldValue = event.target.value;
+
+  //   const newFormData = { ...editTaskFormData };
+  //   newFormData[fieldName] = fieldValue;
+
+  //   setEditTaskFormData(newFormData);
+  // };
+
+  const handleEditClick = (event, taskList) => {
+    event.preventDefault();
+    setEditTaskId(taskList.id);
+
+    const formValues = {
+      id: taskList.id,
+      chore: taskList.chore,
+    };
 
     setEditTaskFormData(formValues);
   };
@@ -44,7 +57,7 @@ const IncompleteTable = ({ parentTasks }) => {
   return (
     <>
       <h2>Incompleted Tasks</h2>
-      <form>
+      <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
@@ -54,22 +67,27 @@ const IncompleteTable = ({ parentTasks }) => {
             </tr>
           </thead>
           <tbody>
-            {parentTasks.map((parentTask, index) => {
+            {taskList.map((parentTask, index) => {
               return (
                 <Fragment>
-                  {editTask === parentTask.id ? (
-                    <EditContent 
-                    parentTask={parentTask} 
-                    index={index}
-                    editTaskFormData={editTaskFormData}
-                    handleEditButtonSubmit={handleEditButtonSubmit}/>
-                    
+                  {editTaskId === parentTask.id ? (
+                    <EditContent
+                      parentTask={parentTask}
+                      index={index}
+                      editTaskFormData={editTaskFormData}
+                      setEditTaskFormData={setEditTaskFormData}
+                    />
                   ) : (
                     <ReadOnly
                       parentTask={parentTask}
                       index={index}
                       handleEditClick={handleEditClick}
                     />
+                    //   <tr key={parentTask.chore}>
+                    //   <td>{Number(index + 1)}</td>
+                    //   <td>{parentTask.chore}</td>
+
+                    // </tr>
                   )}
                 </Fragment>
               );

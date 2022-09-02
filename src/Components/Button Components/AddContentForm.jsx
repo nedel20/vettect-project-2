@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef } from "react";
 
-const AddContentForm = (props) => {
+const AddContentForm = ({parentTasks, addFormData, setAddFormData,handleAddFormSubmit}) => {
     // creating form to input task to table and submit 
 
     // variable to pass data using useRef()
@@ -9,17 +9,26 @@ const AddContentForm = (props) => {
      
 
     // Create form to handle submitted data
-    const handleSubmit = (event) =>{
-        event.preventDefault(); // prevents page from refreshing upon submit
+    const handleAddFormChange = (event) =>{
+        event.preventDefault();
 
-        // const task =taskRef.current.value;
-        props.setMyTasks({chore: taskRef.current.value});
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+    
+        const newFormData = { ...addFormData };
+        newFormData[fieldName] = fieldValue;
+    
+        setAddFormData(newFormData);
     }
 
     return ( 
-        <form>
-            <input placeholder="Input Tasks" ref={taskRef} />
-            <button onClick={handleSubmit} type="button">Add Tasks</button>
+        <form onSubmit={  handleAddFormSubmit}>
+            <input 
+            name='chore'
+            placeholder="Input Tasks"
+             ref={taskRef} 
+             onChange={handleAddFormChange}/>
+           <button type='submit'>Add</button>
         </form>
      );
 }

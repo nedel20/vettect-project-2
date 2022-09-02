@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
-const EditContent = ( {parentTask, editTaskFormData, handleEditButtonSubmit,index }) => {
+const EditContent = ({
+  editTaskFormData,
+  index,
+  setEditTaskFormData,
+  handleEditFormSubmit,
+}) => {
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editTaskFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditTaskFormData(newFormData);
+  };
+
   return (
-    <tr key={parentTask.chore}>
+    <tr key={editTaskFormData}>
       <td>{Number(index + 1)}</td>
       <td>
         <input
@@ -10,8 +27,9 @@ const EditContent = ( {parentTask, editTaskFormData, handleEditButtonSubmit,inde
           name="chore"
           required="required"
           placeholder="Enter a task..."
+          // value={editTaskFormData.chore}
           value={editTaskFormData.chore}
-          onChange={handleEditButtonSubmit}
+          onChange={handleEditFormChange}
         ></input>
       </td>
       <td>
