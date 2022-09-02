@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from 'react';
 
 const EditContent = ({
   editTaskFormData,
   index,
   setEditTaskFormData,
   handleEditFormSubmit,
+  handleCancelClick
 }) => {
   const handleEditFormChange = (event) => {
     event.preventDefault();
@@ -34,6 +35,9 @@ const EditContent = ({
       </td>
       <td>
         <button type="submit">Save</button>
+      </td>
+      <td>
+        <button type="button" onClick={handleCancelClick}>Cancel</button>
       </td>
     </tr>
   );

@@ -41,6 +41,8 @@ const IncompleteTable = ({ taskList, setTasks }) => {
 
   //   setEditTaskFormData(newFormData);
   // };
+  
+ 
 
   const handleEditClick = (event, taskList) => {
     event.preventDefault();
@@ -53,6 +55,21 @@ const IncompleteTable = ({ taskList, setTasks }) => {
 
     setEditTaskFormData(formValues);
   };
+
+  const handleCancelClick = () => {
+    setEditTaskId(null);
+  };
+
+  const handleDeleteClick = (editTaskId) => {
+    const newTask = [...taskList];
+
+    const index = taskList.findIndex((value) => value.id === editTaskId);
+
+    newTask.splice(index, 1);
+
+    setTasks(newTask);
+  };
+
 
   return (
     <>
@@ -76,12 +93,14 @@ const IncompleteTable = ({ taskList, setTasks }) => {
                       index={index}
                       editTaskFormData={editTaskFormData}
                       setEditTaskFormData={setEditTaskFormData}
+                      handleCancelClick={handleCancelClick}
                     />
                   ) : (
                     <ReadOnly
                       parentTask={parentTask}
                       index={index}
                       handleEditClick={handleEditClick}
+                      handleDeleteClick={ handleDeleteClick}
                     />
                     //   <tr key={parentTask.chore}>
                     //   <td>{Number(index + 1)}</td>
