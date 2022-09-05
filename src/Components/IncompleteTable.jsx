@@ -3,7 +3,10 @@ import EditContent from "./EditorReadOnly/EditContent";
 // import EditContentForm from "./EditorReadOnly/EditContentForm";
 import ReadOnly from "./EditorReadOnly/ReadOnly";
 
-const IncompleteTable = ({ taskList, setTasks }) => {
+const IncompleteTable = ({ taskList, setTasks, setCompleteTask, parentTask}) => {
+ 
+
+
   const [editTaskId, setEditTaskId] = useState(null);
 
   const [editTaskFormData, setEditTaskFormData] = useState({
@@ -29,18 +32,6 @@ const IncompleteTable = ({ taskList, setTasks }) => {
     setEditTaskId(null);
   };
 
-  // Create form to handle submitted data
-  // const handleEditButtonSubmit = (event) => {
-  //   event.preventDefault(); // prevents page from refreshing upon submit
-
-  //   const fieldName = event.target.getAttribute("name");
-  //   const fieldValue = event.target.value;
-
-  //   const newFormData = { ...editTaskFormData };
-  //   newFormData[fieldName] = fieldValue;
-
-  //   setEditTaskFormData(newFormData);
-  // };
   
  
 
@@ -68,6 +59,23 @@ const IncompleteTable = ({ taskList, setTasks }) => {
     newTask.splice(index, 1);
 
     setTasks(newTask);
+  };
+
+  // Button that moves incomplete tasks to completed table
+  // upon button click
+  const handleCompleteClick =(completedTaskId)=>{
+      
+  const newTask = [...taskList];
+
+  const index = taskList.filter((value) => value.id === completedTaskId);
+  const newSliceTask = newTask.slice(index,1)
+  
+  // Remove the clicked task
+  newTask.splice(index, 1);
+  // setTasksComList(newTask.splice(index, 1))
+  setTasks(newTask);
+  setCompleteTask(newSliceTask);
+  
   };
 
 
@@ -101,12 +109,10 @@ const IncompleteTable = ({ taskList, setTasks }) => {
                       index={index}
                       handleEditClick={handleEditClick}
                       handleDeleteClick={ handleDeleteClick}
-                    />
-                    //   <tr key={parentTask.chore}>
-                    //   <td>{Number(index + 1)}</td>
-                    //   <td>{parentTask.chore}</td>
+                      handleCompleteClick={handleCompleteClick}
 
-                    // </tr>
+                    />
+                    
                   )}
                 </Fragment>
               );

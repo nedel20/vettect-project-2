@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReadOnly = ({parentTask,index, handleEditClick,  handleDeleteClick}) => {
+const ReadOnly = ({parentTask,index, handleEditClick,  handleDeleteClick,handleCompleteClick}) => {
   return (
     <tr key={parentTask.chore}>
       <td>{Number(index + 1)}</td>
@@ -15,6 +15,11 @@ const ReadOnly = ({parentTask,index, handleEditClick,  handleDeleteClick}) => {
         <button
         type="button"
         onClick={ ()=>handleDeleteClick(parentTask.id)}>Delete</button>
+      </td>
+      <td>
+        <button
+        type="button"
+        onClick={()=>handleCompleteClick(parentTask.id)}>Complete</button>
       </td>
     </tr>
     

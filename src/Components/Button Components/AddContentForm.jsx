@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef } from "react";
 
-const AddContentForm = ({parentTasks, addFormData, setAddFormData,handleAddFormSubmit}) => {
+const AddContentForm = ({addFormData, setAddFormData,handleAddFormSubmit}) => {
     // creating form to input task to table and submit 
 
     // variable to pass data using useRef()

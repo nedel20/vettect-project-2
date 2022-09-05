@@ -13,7 +13,11 @@ function App() {
 
   // passing in data from data file and updating state with data
   const [taskList, setTasks] = useState(data); 
-  
+  // const [taskComList, setTasksComList] = useState(''); 
+  const [completeTask, setCompleteTask] = useState({
+    id: "",
+    chore: "",
+  });
   
   // Creates a new array with contents of the old array in addition to the tasks that needs to be added
   // sets the tasks list to be the new array
@@ -22,9 +26,16 @@ function App() {
   // }
   const [addFormData, setAddFormData] = useState({
     id: "",
-      chore: ""
+    chore: "",
   });
+
   
+ 
+
+  // const handleCompleteClick =(someTask) =>{
+  //   setTasksComList(someTask)
+  // }
+
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
 
@@ -35,6 +46,7 @@ function App() {
 
     const newTasks = [...taskList, newTask];
     setTasks(newTasks);
+
   };
 
 
@@ -46,6 +58,8 @@ function App() {
         <IncompleteTable 
         taskList={taskList}
         setTasks={setTasks}
+        completeTask={completeTask}
+         setCompleteTask={setCompleteTask}
         />
         
         <h3>Add a Task</h3>
@@ -55,7 +69,13 @@ function App() {
         setTasks={setTasks}
         addFormData ={addFormData}
         setAddFormData ={setAddFormData}/>
-        <CompleteTable/>
+
+        <CompleteTable
+        taskList={taskList}
+        
+         completeTask ={completeTask}
+         setCompleteTask ={setCompleteTask}
+        />
         
       </div>
     
