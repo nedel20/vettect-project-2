@@ -1,14 +1,16 @@
 import React  from "react";
 import IncompleteTable from "./IncompleteTable";
 import { useState } from "react";
+import data2 from "../data2.json";
 
 const CompleteTable = ({
-  taskList,
-  taskComList,
+  newTaskList,
+  setNewTaskList,
   completeTask
+ 
 }) => {
 
-
+ 
   
   return (
     <>
@@ -23,16 +25,12 @@ const CompleteTable = ({
             </tr>
           </thead>
           <tbody>
-            {Object.values(completeTask).map((task, index) => {
+            {newTaskList.map((task, index) => {
               return (
                 <tr key={task.chore}>
                   <td>{Number(index + 1)}</td>
                   <td>{task.chore}</td>
-                  {/* <td>
-        <button
-        type="button"
-        onClick={ ()=>handleDeleteClick(parentTask.id)}>Delete</button>
-      </td> */}
+                 
                 </tr>
               );
             })}

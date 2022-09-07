@@ -3,10 +3,15 @@ import EditContent from "./EditorReadOnly/EditContent";
 // import EditContentForm from "./EditorReadOnly/EditContentForm";
 import ReadOnly from "./EditorReadOnly/ReadOnly";
 
-const IncompleteTable = ({ taskList, setTasks, setCompleteTask, parentTask}) => {
- 
-
-
+const IncompleteTable = ({
+  taskList,
+  completeTask,
+  setTasks,
+  setCompleteTask,
+  createNewTableData,
+  newTaskList,
+  setNewTaskList,
+}) => {
   const [editTaskId, setEditTaskId] = useState(null);
 
   const [editTaskFormData, setEditTaskFormData] = useState({
@@ -31,9 +36,6 @@ const IncompleteTable = ({ taskList, setTasks, setCompleteTask, parentTask}) => 
     setTasks(newTasks);
     setEditTaskId(null);
   };
-
-  
- 
 
   const handleEditClick = (event, taskList) => {
     event.preventDefault();
@@ -63,21 +65,26 @@ const IncompleteTable = ({ taskList, setTasks, setCompleteTask, parentTask}) => 
 
   // Button that moves incomplete tasks to completed table
   // upon button click
-  const handleCompleteClick =(completedTaskId)=>{
-      
-  const newTask = [...taskList];
+  const handleCompleteClick = (completedTaskId, completeTask) => {
+    const newTask = [...taskList];
 
-  const index = taskList.filter((value) => value.id === completedTaskId);
-  const newSliceTask = newTask.slice(index,1)
-  
-  // Remove the clicked task
-  newTask.splice(index, 1);
-  // setTasksComList(newTask.splice(index, 1))
-  setTasks(newTask);
-  setCompleteTask(newSliceTask);
-  
+    let newSliceTask = [];
+
+    const index = taskList.filter((value) => value.id === completedTaskId);
+
+    // Copy of selected task
+    newSliceTask = newTask.slice(index, 1);
+
+    // Remove the clicked task
+    newTask.splice(index, 1);
+
+    // const newSliceTask = [...completeData, temp ];
+
+    setTasks(newTask);
+    setCompleteTask(newSliceTask);
+
+    createNewTableData(newSliceTask);
   };
-
 
   return (
     <>
@@ -108,11 +115,10 @@ const IncompleteTable = ({ taskList, setTasks, setCompleteTask, parentTask}) => 
                       parentTask={parentTask}
                       index={index}
                       handleEditClick={handleEditClick}
-                      handleDeleteClick={ handleDeleteClick}
+                      handleDeleteClick={handleDeleteClick}
                       handleCompleteClick={handleCompleteClick}
-
+                      createNewTableData={createNewTableData}
                     />
-                    
                   )}
                 </Fragment>
               );
