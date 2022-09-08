@@ -4,7 +4,6 @@ const EditContent = ({
   editTaskFormData,
   index,
   setEditTaskFormData,
-  handleEditFormSubmit,
   handleCancelClick
 }) => {
   const handleEditFormChange = (event) => {
@@ -28,7 +27,7 @@ const EditContent = ({
           name="chore"
           required="required"
           placeholder="Enter a task..."
-          // value={editTaskFormData.chore}
+          
           value={editTaskFormData.chore}
           onChange={handleEditFormChange}
         ></input>

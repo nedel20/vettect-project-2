@@ -99,12 +99,12 @@ const IncompleteTable = ({
             </tr>
           </thead>
           <tbody>
-            {taskList.map((parentTask, index) => {
+            {taskList.map((task, index) => {
               return (
                 <Fragment>
-                  {editTaskId === parentTask.id ? (
+                  {editTaskId === task.id ? (
                     <EditContent
-                      parentTask={parentTask}
+                      
                       index={index}
                       editTaskFormData={editTaskFormData}
                       setEditTaskFormData={setEditTaskFormData}
@@ -112,7 +112,7 @@ const IncompleteTable = ({
                     />
                   ) : (
                     <ReadOnly
-                      parentTask={parentTask}
+                      task={task}
                       index={index}
                       handleEditClick={handleEditClick}
                       handleDeleteClick={handleDeleteClick}
