@@ -32,7 +32,7 @@ const AddContentForm = ({
         ref={taskRef}
         onChange={handleAddFormChange}
       />
-      <button type="submit">Add</button>
+      <button type="submit">Add New Todo Item</button>
     </form>
   );
 };

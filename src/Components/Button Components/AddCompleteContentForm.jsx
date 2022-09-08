@@ -32,7 +32,7 @@ const AddCompleteContentForm = ({
         ref={taskRef}
         onChange={handleAddCompleteFormChange}
       />
-      <button type="submit">Add Completed Item</button>
+      <button type="submit">Add Complete Item</button>
     </form>
   );
 };
