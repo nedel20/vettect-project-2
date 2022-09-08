@@ -19,10 +19,7 @@ function App() {
     chore: "",
   });
 
-  const [newTask, setNewTask] = useState({
-    chore: "",
-    id: null,
-  });
+ 
 
   const [completeTask, setCompleteTask] = useState({
     id: "",
@@ -33,13 +30,9 @@ function App() {
 
   // Creates a new array with contents of the old array in addition to the tasks that needs to be added
   // sets the tasks list to be the new array
-  // const addTask =(tasks) =>{
-  //   setTasks([...taskList,tasks]);
-  // }
+ 
 
-  // const handleCompleteClick =(someTask) =>{
-  //   setTasksComList(someTask)
-  // }
+  
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
@@ -53,9 +46,20 @@ function App() {
     setTasks(newTasks);
   };
 
-  const createNewTableData = (task) => {
-    // setNewTask(task); 
+  const handleAddCompleteFormSubmit =(event) =>{
+    event.preventDefault();
 
+    const newTask = {
+      id: addFormData.id,
+      chore: addFormData.chore,
+    };
+
+    const newTasks = [...taskList, newTask];
+    setNewTaskList(newTasks);
+  }
+
+  const createNewTableData = (task) => {
+    
     let newTasks = [...newTaskList,...task];
     setNewTaskList(newTasks);
   };
@@ -71,7 +75,7 @@ function App() {
       />
 
       <h3>Add a Task</h3>
-      {/* <AddContentForm setMyTasks={addTask}/>  */}
+     
       <AddContentForm
         handleAddFormSubmit={handleAddFormSubmit}
         setTasks={setTasks}

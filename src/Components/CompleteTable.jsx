@@ -6,8 +6,7 @@ import data2 from "../data2.json";
 const CompleteTable = ({
   newTaskList,
   setNewTaskList,
-  completeTask
- 
+   
 }) => {
 
  
