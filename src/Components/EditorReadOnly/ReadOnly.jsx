@@ -1,25 +1,25 @@
 import React from "react";
 
-const ReadOnly = ({parentTask,index, handleEditClick, createNewTableData, handleDeleteClick,handleCompleteClick}) => {
+const ReadOnly = ({task,index, handleEditClick, handleDeleteClick,handleCompleteClick}) => {
   return (
-    <tr key={parentTask.chore}>
+    <tr key={task.chore}>
       <td>{Number(index + 1)}</td>
-      <td>{parentTask.chore}</td>
+      <td>{task.chore}</td>
       <td>
         <button 
         type="button"
-        onClick={(event) =>handleEditClick(event, parentTask)}
+        onClick={(event) =>handleEditClick(event, task)}
         >Edit</button>
       </td>
       <td>
         <button
         type="button"
-        onClick={ ()=>handleDeleteClick(parentTask.id)}>Delete</button>
+        onClick={ ()=>handleDeleteClick(task.id)}>Delete</button>
       </td>
       <td>
         <button
         type="submit"
-        onClick={()=>handleCompleteClick(parentTask.id)} >Complete</button>
+        onClick={()=>handleCompleteClick(task.id)} >Complete</button>
       </td>
     </tr>
     
