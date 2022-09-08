@@ -1,7 +1,6 @@
 import React  from "react";
-import IncompleteTable from "./IncompleteTable";
-import { useState } from "react";
-import data2 from "../data2.json";
+
+
 
 const CompleteTable = ({
   newTaskList,
