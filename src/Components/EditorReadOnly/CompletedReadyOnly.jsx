@@ -1,4 +1,7 @@
 import React from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import UndoIcon from '@mui/icons-material/Undo';
 
 function CompletedReadyOnly({
   task,
@@ -12,22 +15,20 @@ function CompletedReadyOnly({
       <td>{Number(index + 1)}</td>
       <td>{task.chore}</td>
       <td>
-        <button
+        <EditIcon
           type="button"
           onClick={(event) => handleCompleteEditClick(event, task)}
-        >
-          Edit
-        </button>
+       />
+        
       </td>
       <td>
-        <button type="button" onClick={() => handleDeleteClick(task.id)}>
-          Delete
-        </button>
+        <DeleteIcon type="button" onClick={() => handleDeleteClick(task.id)}/>
+        
       </td>
       <td>
-        <button
+        <UndoIcon
         type="submit"
-        onClick={()=>handleUndoCompleteClick(task.id)} >Undo</button>
+        onClick={()=>handleUndoCompleteClick(task.id)} />
       </td>
     </tr>
   );

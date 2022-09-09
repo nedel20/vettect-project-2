@@ -6,6 +6,7 @@ import CompleteTable from "./Components/CompleteTable";
 import IncompleteTable from "./Components/IncompleteTable";
 import data from "./data.json";
 import data2 from "./data2.json";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 /**
  *

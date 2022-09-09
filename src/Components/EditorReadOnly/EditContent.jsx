@@ -1,4 +1,6 @@
 import React from 'react';
+import SaveIcon from "@mui/icons-material/Save";
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const EditContent = ({
   editTaskFormData,
@@ -33,10 +35,10 @@ const EditContent = ({
         ></input>
       </td>
       <td>
-        <button type="submit">Save</button>
+        <SaveIcon type="submit"/>
       </td>
       <td>
-        <button type="button" onClick={handleCancelClick}>Cancel</button>
+        <CancelIcon type="button" onClick={handleCancelClick}/>
       </td>
     </tr>
   );

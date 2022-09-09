@@ -1,28 +1,35 @@
 import React from "react";
 
-const ReadOnly = ({task,index, handleEditClick, handleDeleteClick,handleCompleteClick}) => {
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import CheckIcon from '@mui/icons-material/Check';
+
+const ReadOnly = ({
+  task,
+  index,
+  handleEditClick,
+  handleDeleteClick,
+  handleCompleteClick,
+}) => {
   return (
     <tr key={task.chore}>
       <td>{Number(index + 1)}</td>
       <td>{task.chore}</td>
       <td>
-        <button 
-        type="button"
-        onClick={(event) =>handleEditClick(event, task)}
-        >Edit</button>
+        <EditIcon
+          type="button"
+          onClick={(event) => handleEditClick(event, task)}
+        />
       </td>
       <td>
-        <button
-        type="button"
-        onClick={ ()=>handleDeleteClick(task.id)}>Delete</button>
+        <DeleteIcon type="button" onClick={() => handleDeleteClick(task.id)} />
       </td>
       <td>
-        <button
-        type="submit"
-        onClick={()=>handleCompleteClick(task.id)} >Complete</button>
+        <CheckIcon type="submit" onClick={() => handleCompleteClick(task.id)}/>
+          
+        
       </td>
     </tr>
-    
   );
 };
 
