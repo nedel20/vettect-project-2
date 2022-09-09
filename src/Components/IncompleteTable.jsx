@@ -5,9 +5,7 @@ import ReadOnly from "./EditorReadOnly/ReadOnly";
 
 const IncompleteTable = ({
   taskList,
-  completeTask,
   setTasks,
-  setCompleteTask,
   createNewTableData,
   newTaskList,
   setNewTaskList,
@@ -29,7 +27,8 @@ const IncompleteTable = ({
 
     const newTasks = [...taskList];
 
-    const index = taskList.findIndex((value) => value.id === editTaskId);
+    const index = taskList.findIndex(
+      (value) => value.id === editTaskId);
 
     newTasks[index] = editedTask;
 
@@ -65,25 +64,25 @@ const IncompleteTable = ({
 
   // Button that moves incomplete tasks to completed table
   // upon button click
-  const handleCompleteClick = (completedTaskId, completeTask) => {
+  const handleCompleteClick = (completedTaskId) => {
+    // copy of data that is mutable 
     const newTask = [...taskList];
 
-    let newSliceTask = [];
+    
 
-    const index = taskList.filter((value) => value.id === completedTaskId);
+     // filter thru both collections to find matching index
+    const index = taskList.findIndex(
+      (value) => value.id === completedTaskId);
 
-    // Copy of selected task
-    newSliceTask = newTask.slice(index, 1);
-
+    
+     
     // Remove the clicked task
-    newTask.splice(index, 1);
+    createNewTableData(newTask.splice(index,1));
+   
+    // Update data on Incomplete table 
+    setTasks(newTask);   
 
-    // const newSliceTask = [...completeData, temp ];
-
-    setTasks(newTask);
-    setCompleteTask(newSliceTask);
-
-    createNewTableData(newSliceTask);
+    
   };
 
   return (
@@ -104,7 +103,6 @@ const IncompleteTable = ({
                 <Fragment>
                   {editTaskId === task.id ? (
                     <EditContent
-                      
                       index={index}
                       editTaskFormData={editTaskFormData}
                       setEditTaskFormData={setEditTaskFormData}
@@ -117,7 +115,7 @@ const IncompleteTable = ({
                       handleEditClick={handleEditClick}
                       handleDeleteClick={handleDeleteClick}
                       handleCompleteClick={handleCompleteClick}
-                      createNewTableData={createNewTableData}
+                     
                     />
                   )}
                 </Fragment>

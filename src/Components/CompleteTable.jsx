@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import CompletedReadyOnly from "./EditorReadOnly/CompletedReadyOnly";
 import EditCompleteContent from "./EditorReadOnly/EditCompleteContent";
 
-const CompleteTable = ({ newTaskList, setNewTaskList }) => {
+const CompleteTable = ({ newTaskList, setNewTaskList, undoComplete }) => {
   const [editCompleteTaskId, setEditCompleteTaskId] = useState(null);
 
   const [editCompleteTaskFormData, setEditCompleteTaskFormData] = useState({
@@ -46,6 +46,32 @@ const CompleteTable = ({ newTaskList, setNewTaskList }) => {
     setEditCompleteTaskId(null);
   };
 
+  const handleDeleteClick = (editCompleteTaskId) => {
+    const newTask = [...newTaskList];
+
+    const index = newTaskList.findIndex(
+      (value) => value.id === editCompleteTaskId
+    );
+
+    newTask.splice(index, 1);
+
+    setNewTaskList(newTask);
+  };
+
+  const handleUndoCompleteClick = (taskId) => {
+    // copy of data that is mutable
+    const newTask = [...newTaskList];
+
+    // filter thru both collections to find matching index
+    const index = newTaskList.findIndex((value) => value.id === taskId);
+
+    // Remove the clicked task
+    undoComplete(newTask.splice(index, 1));
+
+    // Update data on finished table
+    setNewTaskList(newTask);
+  };
+
   return (
     <>
       <form onSubmit={handleEditCompleteFormSubmit}>
@@ -62,7 +88,6 @@ const CompleteTable = ({ newTaskList, setNewTaskList }) => {
             {newTaskList.map((task, index) => {
               return (
                 <Fragment>
-                  
                   {editCompleteTaskId === task.id ? (
                     <EditCompleteContent
                       index={index}
@@ -75,6 +100,8 @@ const CompleteTable = ({ newTaskList, setNewTaskList }) => {
                       task={task}
                       index={index}
                       handleCompleteEditClick={handleCompleteEditClick}
+                      handleDeleteClick={handleDeleteClick}
+                      handleUndoCompleteClick={handleUndoCompleteClick}
                     />
                   )}
                 </Fragment>

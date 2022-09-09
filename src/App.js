@@ -12,30 +12,25 @@ import data2 from "./data2.json";
  * AddContentForm pass in props to form to  allow access
  */
 function App() {
-  // passing in data from data file and updating state with data for incomplete table 
+  // passing in data from data file and updating state with data for incomplete table
   const [taskList, setTasks] = useState(data);
 
-  //  passing in data from data file and updating state with data for completed table 
+  //  passing in data from data file and updating state with data for completed table
   const [newTaskList, setNewTaskList] = useState(data2);
 
-  // UseState Variables for Add input form for Incomplete Table 
+  // UseState Variables for Add input form for Incomplete Table
   const [addFormData, setAddFormData] = useState({
     id: "",
     chore: "",
   });
 
-  // UseState Variables for Add input form for Completed Table 
+  // UseState Variables for Add input form for Completed Table
   const [addCompleteFormData, setAddCompleteFormData] = useState({
     id: "",
     chore: "",
   });
 
- 
-
-  const [completeTask, setCompleteTask] = useState({
-    id: "",
-    chore: "",
-  });  
+  
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
@@ -49,7 +44,7 @@ function App() {
     setTasks(newTasks);
   };
 
-  const handleAddCompleteFormSubmit =(event) =>{
+  const handleAddCompleteFormSubmit = (event) => {
     event.preventDefault();
 
     const newTask = {
@@ -59,45 +54,48 @@ function App() {
 
     const newTasks = [...newTaskList, newTask];
     setNewTaskList(newTasks);
-  }
-
-
-
-  
+  };
 
   const createNewTableData = (task) => {
-    
-    let newTasks = [...newTaskList,...task];
+    let newTasks = [...newTaskList, ...task];
     setNewTaskList(newTasks);
   };
+
+  const undoComplete = (task) =>{
+    let newTasks=[...taskList, ...task]; 
+    setTasks(newTasks);
+  }
 
   return (
     <div className="App">
       <IncompleteTable
         taskList={taskList}
         setTasks={setTasks}
-        completeTask={completeTask}
-        setCompleteTask={setCompleteTask}
-        createNewTableData ={createNewTableData }
+       
+        createNewTableData={createNewTableData}
       />
 
       <h3>Add A New Todo Item</h3>
-     
+
       <AddContentForm
         handleAddFormSubmit={handleAddFormSubmit}
-       
         addFormData={addFormData}
         setAddFormData={setAddFormData}
       />
 
-      <CompleteTable newTaskList={newTaskList}/>
+      <CompleteTable
+        newTaskList={newTaskList}
+        setNewTaskList={setNewTaskList}
+        undoComplete={undoComplete}
+      />
 
-      <h3>Add A New Finished Item</h3> 
+      <h3>Add A New Finished Item</h3>
 
-      <AddCompleteContentForm 
-      addCompleteFormData={addCompleteFormData} 
-      setAddCompleteFormData={setAddCompleteFormData}
-      handleAddCompleteFormSubmit={handleAddCompleteFormSubmit}/>
+      <AddCompleteContentForm
+        addCompleteFormData={addCompleteFormData}
+        setAddCompleteFormData={setAddCompleteFormData}
+        handleAddCompleteFormSubmit={handleAddCompleteFormSubmit}
+      />
     </div>
   );
 }

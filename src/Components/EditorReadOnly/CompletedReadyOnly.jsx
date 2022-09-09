@@ -1,6 +1,12 @@
 import React from "react";
 
-function CompletedReadyOnly({ task, index, handleCompleteEditClick }) {
+function CompletedReadyOnly({
+  task,
+  index,
+  handleCompleteEditClick,
+  handleDeleteClick,
+  handleUndoCompleteClick
+}) {
   return (
     <tr key={task.chore}>
       <td>{Number(index + 1)}</td>
@@ -9,7 +15,19 @@ function CompletedReadyOnly({ task, index, handleCompleteEditClick }) {
         <button
           type="button"
           onClick={(event) => handleCompleteEditClick(event, task)}
-        >Edit</button>
+        >
+          Edit
+        </button>
+      </td>
+      <td>
+        <button type="button" onClick={() => handleDeleteClick(task.id)}>
+          Delete
+        </button>
+      </td>
+      <td>
+        <button
+        type="submit"
+        onClick={()=>handleUndoCompleteClick(task.id)} >Undo</button>
       </td>
     </tr>
   );
