@@ -1,5 +1,5 @@
 import React from "react";
-import SaveIcon from "@mui/icons-material/Save";
+// import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from '@mui/icons-material/Cancel';
 
 function EditCompleteContent({
@@ -35,7 +35,8 @@ function EditCompleteContent({
         ></input>
       </td>
       <td>
-        <SaveIcon type="submit"/>
+       
+        <button type="submit">Save</button>
       </td>
       <td>
         <CancelIcon type="button" onClick={handleCancelClick}/>

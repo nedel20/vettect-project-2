@@ -1,14 +1,13 @@
 import React, { Fragment, useState } from "react";
 import EditContent from "./EditorReadOnly/EditContent";
-// import EditContentForm from "./EditorReadOnly/EditContentForm";
 import ReadOnly from "./EditorReadOnly/ReadOnly";
+
 
 const IncompleteTable = ({
   taskList,
   setTasks,
   createNewTableData,
-  newTaskList,
-  setNewTaskList,
+
 }) => {
   const [editTaskId, setEditTaskId] = useState(null);
 
@@ -87,9 +86,9 @@ const IncompleteTable = ({
 
   return (
     <>
-      <h2>Incompleted Tasks</h2>
+      <h3>Incompleted Tasks</h3>
       <form onSubmit={handleEditFormSubmit}>
-        <table>
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>Task ID</th>

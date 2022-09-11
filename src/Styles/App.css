@@ -1,0 +1,21 @@
+* {
+  font-family: cursive;
+  background-color: beige;
+}
+
+div {
+  height: 200px;
+  width: auto;
+}
+
+h3 {
+  margin: 10px;
+}
+
+form {
+  margin: 10px;
+}
+
+td {
+  column-width: 1rem;
+}

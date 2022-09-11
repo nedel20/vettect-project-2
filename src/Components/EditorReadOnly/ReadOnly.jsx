@@ -15,7 +15,7 @@ const ReadOnly = ({
     <tr key={task.chore}>
       <td>{Number(index + 1)}</td>
       <td>{task.chore}</td>
-      <td>
+      <td className="col-sm-1">
         <EditIcon
           type="button"
           onClick={(event) => handleEditClick(event, task)}

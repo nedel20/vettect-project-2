@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import CompletedReadyOnly from "./EditorReadOnly/CompletedReadyOnly";
 import EditCompleteContent from "./EditorReadOnly/EditCompleteContent";
 
+
 const CompleteTable = ({ newTaskList, setNewTaskList, undoComplete }) => {
   const [editCompleteTaskId, setEditCompleteTaskId] = useState(null);
 
@@ -63,7 +64,8 @@ const CompleteTable = ({ newTaskList, setNewTaskList, undoComplete }) => {
     const newTask = [...newTaskList];
 
     // filter thru both collections to find matching index
-    const index = newTaskList.findIndex((value) => value.id === taskId);
+    const index = newTaskList.findIndex(
+      (value) => value.id === taskId);
 
     // Remove the clicked task
     undoComplete(newTask.splice(index, 1));
@@ -76,12 +78,12 @@ const CompleteTable = ({ newTaskList, setNewTaskList, undoComplete }) => {
     <>
       <form onSubmit={handleEditCompleteFormSubmit}>
         <h2>Completed Tasks</h2>
-        <table>
-          <thead>
-            <tr>
+        <table className="table table-striped">
+          <thead >
+            <tr >
               <th>Task ID</th>
               <th>Task</th>
-              <th>Task Options</th>
+              <th>Options</th>
             </tr>
           </thead>
           <tbody>

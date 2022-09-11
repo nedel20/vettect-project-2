@@ -1,12 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState }  from "react";
+import Styles from "./Styles/App.css";
 import AddContentForm from "./Components/Button Components/AddContentForm";
 import AddCompleteContentForm from "./Components/Button Components/AddCompleteContentForm";
 import CompleteTable from "./Components/CompleteTable";
 import IncompleteTable from "./Components/IncompleteTable";
 import data from "./data.json";
 import data2 from "./data2.json";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /**
  *
@@ -69,6 +69,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Task <small className='text-muted'>Manager</small></h1>
       <IncompleteTable
         taskList={taskList}
         setTasks={setTasks}
